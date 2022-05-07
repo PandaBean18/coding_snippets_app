@@ -7,6 +7,14 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 6, allow_nil: true }
     before_validation :ensure_session_token 
 
+    has_many(
+        :posts, 
+        class_name: 'Post', 
+        foreign_key: 'user_id', 
+        primary_key: 'id', 
+        dependent: :destroy
+    )
+
     after_initialize do |user| 
         user.session_token ||= User.generate_session_token
     end
@@ -17,7 +25,7 @@ class User < ApplicationRecord
 
 
     def self.find_by_credentials(username, password)
-        user = User.find_by(username: username).first 
+        user = User.find_by(username: username)
 
         return nil if user.nil? 
 
