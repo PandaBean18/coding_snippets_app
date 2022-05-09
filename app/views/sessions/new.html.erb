@@ -7,3 +7,9 @@
     <br>
     <input type="submit" value="Log in">
 </form>
+
+<div class="errors">
+  <% if flash.now[:errors] %>
+    <p><%= flash.now[:errors] %></p>
+  <% end %>
+</div>
