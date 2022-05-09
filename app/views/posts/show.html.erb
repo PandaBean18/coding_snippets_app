@@ -1,0 +1,13 @@
+<h1><%= @post.heading %></h1>
+
+<div class="desc">
+  <p><%= @post.description %></p>
+</div>
+
+<div class="snippet">
+  <pre style="background: rgb(45, 45, 45); color: white; width: 500px; border-radius: 12px;">
+    <code>
+      <%= @post.beautify_snippet %>
+    </code>
+  </pre>
+</div>

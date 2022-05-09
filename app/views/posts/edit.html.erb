@@ -1,21 +1,22 @@
-<h1>Add a new post</h1>
+<h1>Edit post</h1>
 <form class="" action="<%= posts_url %>" method="post">
   <%= auth_token %>
+  <input type="hidden" name="post[id]" value="<%= @post.id %>">
   <input type="text" name="post[heading]" placeholder="Heading" value="<%= @post && @post.heading ? @post.heading : '' %>">
   <br>
-  <% if @post && @post.description %>
+  <% if @post.description %>
     <textarea name="post[description]" rows="8" cols="80" placeholder="Description"><%= @post.description %></textarea>
   <% else %>
     <textarea name="post[description]" rows="8" cols="80" placeholder="Description"></textarea>
   <% end %>
   <br>
-  <% if @post && @post.snippet %>
+  <% if @post.snippet %>
     <textarea name="post[snippet]" rows="8" cols="80" placeholder="Code Snippet (Feel free to add multiple languages, use 2 spaces for indent)"><%= @post.snippet %></textarea>
   <% else %>
     <textarea name="post[snippet]" rows="8" cols="80" placeholder="Code Snippet (Feel free to add multiple languages, use 2 spaces for indent)"></textarea>
   <% end %>
   <br>
-  <input type="submit" value="Create a post">
+  <input type="submit" value="Edit post">
 </form>
 
 <div class="errors">
