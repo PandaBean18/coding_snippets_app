@@ -15,6 +15,14 @@ class User < ApplicationRecord
         dependent: :destroy
     )
 
+    has_many(
+        :coding_snippets,
+        class_name: 'Snippet', 
+        foreign_key: 'user_id', 
+        primary_key: 'id', 
+        dependent: :destroy
+    )
+
     after_initialize do |user| 
         user.session_token ||= User.generate_session_token
     end
