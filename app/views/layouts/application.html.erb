@@ -13,6 +13,14 @@
   </head>
 
   <body>
+    <header>
+      <div class="main-header">
+         <p><%= current_user.username %></p>
+         <form action="<%= new_session_url %>" method="get">
+           <input type="submit" value="Log in">
+         </form>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>

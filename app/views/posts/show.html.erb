@@ -11,3 +11,18 @@
     </code>
   </pre>
 </div>
+
+<% if current_user.id == @post.user_id %>
+  <div class="creator_options">
+    <form class="" action="<%= edit_post_url %>" method="get">
+      <%= auth_token %>
+      <input type="submit" value="Edit post">
+    </form>
+
+    <form class="" action="<%= post_url %>" method="post">
+      <%= auth_token %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete post">
+    </form>
+  </div>
+<% end %>

@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
     def show
         @post = Post.find_by(id: params[:id])
-        render :show
+        if @post 
+            render :show
+        else  
+            redirect_to user_url(current_user)
+        end
     end
 
     def new
@@ -37,7 +41,6 @@ class PostsController < ApplicationController
     def update
         id = edit_post_params[:id]
         @post = Post.find_by(id: id)
-
         if @post.update(post_params)
             redirect_to post_url(@post)
         else

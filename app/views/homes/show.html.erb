@@ -1,0 +1,12 @@
+<div class="outer-container">
+  <% Post.all.order(created_at: 'desc').each do |post| %>
+    <a href="<%= post_url(post) %>">
+      <div class="inner-container">
+        <p><%= post.heading %></p>
+        <br>
+        <p>By: <%= User.find_by(id: post.user_id).username %></p>
+      </div>
+    </a>
+    <br>
+  <% end %>
+</div>
