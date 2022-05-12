@@ -22,7 +22,7 @@ class PostsController < ApplicationController
         @post = Post.new(new_post_params)
 
         if @post.save
-            redirect_to post_url(@post)
+            redirect_to "/posts/#{@post.id}/snippets/new"
         else
             flash.now[:errors] = @post.errors.full_messages[0]
             render :new

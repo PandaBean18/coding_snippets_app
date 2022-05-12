@@ -5,11 +5,13 @@
 </div>
 
 <div class="snippet">
-  <pre style="background: rgb(45, 45, 45); color: white; width: 500px; border-radius: 12px;">
-    <code>
-      <%= @post.beautify_snippet %>
-    </code>
-  </pre>
+  <% @post.coding_snippets.each do |snippet| %>
+    <pre style="background: rgb(45, 45, 45); color: white; width: 500px; border-radius: 12px;">
+      <code>
+        <%= snippet.beautify_snippet %>
+      </code>
+    </pre>
+  <% end %>
 </div>
 
 <% if current_user.id == @post.user_id %>

@@ -1,0 +1,21 @@
+<form class="" action="<%= snippets_url %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="snippet[post_id]" value="<%= @post.id %>">
+  <label for="languages">Please select the language:</label>
+  <select class="" name="snippet[language]">
+    <option <%= @snippet.language ? '' : 'selected' %> disabled>--Please select a language</option>
+    <option value="python" <%= @snippet.language == 'python' ? 'selected' : '' %>>Python</option>
+    <option value="ruby" <%= @snippet.language == 'ruby' ? 'selected' : '' %>>Ruby</option>
+    <option value="java" <%= @snippet.language == 'java' ? 'selected' : '' %>>Java</option>
+  </select>
+  <br>
+  <textarea name="snippet[code]" rows="8" cols="80" placeholder="Code Snippet (Feel free to add multiple languages, use 2 spaces for indent)"></textarea>
+  <br>
+  <input type="submit" value="Add snippet!">
+</form>
+
+<% if flash.now[:errors] %>
+  <div class="errors">
+    <p><%= flash.now[:errors] %></p>
+  </div>
+<% end %>

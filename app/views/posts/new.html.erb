@@ -9,13 +9,7 @@
     <textarea name="post[description]" rows="8" cols="80" placeholder="Description"></textarea>
   <% end %>
   <br>
-  <% if @post && @post.snippet %>
-    <textarea name="post[snippet]" rows="8" cols="80" placeholder="Code Snippet (Feel free to add multiple languages, use 2 spaces for indent)"><%= @post.snippet %></textarea>
-  <% else %>
-    <textarea name="post[snippet]" rows="8" cols="80" placeholder="Code Snippet (Feel free to add multiple languages, use 2 spaces for indent)"></textarea>
-  <% end %>
-  <br>
-  <input type="submit" value="Create a post">
+  <input type="submit" value="Add a code snippet to this post">
 </form>
 
 <div class="errors">
