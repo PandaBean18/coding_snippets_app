@@ -1,18 +1,31 @@
 <h1><%= @post.heading %></h1>
-
+<h3>By: <%= @post.user.username %></h3>
 <div class="desc">
   <p><%= @post.description %></p>
 </div>
 
 <div class="snippet">
   <% @post.coding_snippets.each do |snippet| %>
+    <p>Snippet by: <%= snippet.user.username %></p>
     <pre style="background: rgb(45, 45, 45); color: white; width: 500px; border-radius: 12px;">
       <code>
+        <%= '' %>
         <%= snippet.beautify_snippet %>
       </code>
     </pre>
+
+    <% if current_user == snippet.user %>
+      <form class="" action="<%= snippet_url(snippet) %>" method="post">
+        <%= auth_token %>
+        <input type="hidden" name="_method" value="delete">
+        <input type="hidden" name="snippet[id]" value="<%= snippet.id %>">
+        <input type="submit" value="Delete">
+      </form>
+    <% end %>
   <% end %>
 </div>
+
+<%= link_to 'Add a new snippet', "/posts/#{@post.id}/snippets/new" %>
 
 <% if current_user.id == @post.user_id %>
   <div class="creator_options">

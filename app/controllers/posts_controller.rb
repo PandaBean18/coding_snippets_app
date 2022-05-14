@@ -34,7 +34,7 @@ class PostsController < ApplicationController
         if current_user
             render :edit
         else
-            redirect_to new_session_url
+            redirect_to "/home"
         end
     end
 
