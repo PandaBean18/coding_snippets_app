@@ -1,18 +1,36 @@
 .outer-container a {
   text-decoration: none;
+  color: #000000;
+  font-weight: 1000;
+  font-size: 22px;
+}
+
+.inner-posts-container {
+  padding: 5px;
+}
+
+.inner-posts-container:hover {
+  background-color: #f0f0f0;
+  transition: 0.3s;
+
+}
+
+.heading {
+  margin: 0px;
+  float: left;
 }
 
 .inner-posts-container:hover .heading {
-  float: left;
-  margin: 0px;
-  margin-right: 5px;
+
 }
 
 .inner-posts-container:hover .post-desc {
-  display: block;
+  opacity: 100%;
+  transition: 0.3s;
 
 }
 
 .post-desc {
-  display: none;
+  opacity: 0%;
+  margin: 0px;
 }

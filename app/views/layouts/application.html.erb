@@ -17,13 +17,12 @@
       <% if yield(:header).length == 0 %>
         <div class="main-header">
           <div class="home">
-            <%= link_to 'Home', '/home' %>
+            <h1><%= link_to 'Home', '/home' %></h1>
           </div>
+
           <div class="user-info">
-             <p><%= current_user.username %></p>
-             <form action="<%= new_session_url %>" method="get">
-               <input type="submit" value="Log in">
-             </form>
+             <h1><%= current_user.username %></h1>
+             <%= button_to 'Log in', new_session_url, method: 'get' %>
            </div>
         </div>
       <% else %>

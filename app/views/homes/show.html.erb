@@ -3,7 +3,7 @@
     <a href="<%= post_url(post) %>">
       <div class="inner-posts-container">
         <p class="heading"><%= post.heading %></p>
-        <p class="post-desc"><%= post.description[0..30] + '...' %></p>
+        <p class="post-desc">:- <%= post.description[0..30] + '...' %></p>
         <p>By: <%= User.find_by(id: post.user_id).username %></p>
       </div>
     </a>

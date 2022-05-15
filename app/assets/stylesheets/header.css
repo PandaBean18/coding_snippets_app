@@ -1,15 +1,44 @@
 .main-header {
   display: flex;
   justify-content: space-between;
+  background-color: #000000;
+  color: #f0f0f0;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 .user-info {
-  width: 150px;
+  width: 220px;
+
 }
 
-.user-info p {
+.user-info h1 {
   float: left;
-  margin: 0px;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.home a {
+  color: #f0f0f0;
+  padding-left: 10px;
+  text-decoration: none;
+}
+
+input[type="submit"]{
+  background-color: #fde4c3;
+  width: 75px;
+  height: 35px;
+  margin: 0;
+  border-radius: 12px;
+  border: 0px;
+}
+
+form {
+  width: 60px;
+  float: left;
+  margin-top: 26px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
