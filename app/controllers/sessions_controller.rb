@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
     def new
         if current_user
-            redirect_to user_url(current_user)
+            redirect_to "/home"
         else
             render :new
         end

@@ -1,0 +1,18 @@
+.outer-container a {
+  text-decoration: none;
+}
+
+.inner-posts-container:hover .heading {
+  float: left;
+  margin: 0px;
+  margin-right: 5px;
+}
+
+.inner-posts-container:hover .post-desc {
+  display: block;
+
+}
+
+.post-desc {
+  display: none;
+}

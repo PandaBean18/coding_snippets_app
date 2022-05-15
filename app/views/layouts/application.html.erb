@@ -14,12 +14,21 @@
 
   <body>
     <header>
-      <div class="main-header">
-         <p><%= current_user.username %></p>
-         <form action="<%= new_session_url %>" method="get">
-           <input type="submit" value="Log in">
-         </form>
-      </div>
+      <% if yield(:header).length == 0 %>
+        <div class="main-header">
+          <div class="home">
+            <%= link_to 'Home', '/home' %>
+          </div>
+          <div class="user-info">
+             <p><%= current_user.username %></p>
+             <form action="<%= new_session_url %>" method="get">
+               <input type="submit" value="Log in">
+             </form>
+           </div>
+        </div>
+      <% else %>
+        <%= yield(:header) %>
+      <% end %>
     </header>
     <%= yield %>
   </body>
