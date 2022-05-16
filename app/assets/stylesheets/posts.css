@@ -7,10 +7,12 @@
 
 .inner-posts-container {
   padding: 5px;
+  border-bottom: 1px solid #dbd9d9;
 }
 
 .inner-posts-container:hover {
   background-color: #f0f0f0;
+  border-bottom: 0px;
   transition: 0.3s;
 
 }
@@ -33,4 +35,13 @@
 .post-desc {
   opacity: 0%;
   margin: 0px;
+}
+
+.new-post {
+  margin: auto;
+}
+
+.new-post a {
+  display: block;
+  text-align: center;
 }

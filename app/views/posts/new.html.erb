@@ -1,16 +1,20 @@
 <h1>Add a new post</h1>
-<form class="" action="<%= posts_url %>" method="post">
-  <%= auth_token %>
-  <input type="text" name="post[heading]" placeholder="Heading" value="<%= @post && @post.heading ? @post.heading : '' %>">
-  <br>
-  <% if @post && @post.description %>
-    <textarea name="post[description]" rows="8" cols="80" placeholder="Description"><%= @post.description %></textarea>
-  <% else %>
-    <textarea name="post[description]" rows="8" cols="80" placeholder="Description"></textarea>
-  <% end %>
-  <br>
-  <input type="submit" value="Add a code snippet to this post">
-</form>
+<div class="new">
+    <form action="<%= posts_url %>" method="post">
+    <%= auth_token %>
+    <input type="text" name="post[heading]" placeholder="Heading" value="<%= @post && @post.heading ? @post.heading : '' %>">
+    <br>
+    <br>
+    <% if @post && @post.description %>
+      <textarea name="post[description]" rows="8" cols="80" placeholder="Description"><%= @post.description %></textarea>
+    <% else %>
+      <textarea name="post[description]" rows="8" cols="80" placeholder="Description"></textarea>
+    <% end %>
+    <br>
+    <br>
+    <input type="submit" value="Add a code snippet to this post">
+  </form>
+</div>
 
 <div class="errors">
   <% if flash.now[:errors] %>

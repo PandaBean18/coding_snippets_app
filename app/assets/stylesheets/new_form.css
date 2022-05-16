@@ -1,0 +1,15 @@
+.new {
+  margin: auto;
+  width: 650px;
+  overflow: hidden;
+}
+
+.new form {
+  width: auto;
+  padding: 5px;
+}
+
+.new input {
+  width: 200px;
+  height: 50px;
+}

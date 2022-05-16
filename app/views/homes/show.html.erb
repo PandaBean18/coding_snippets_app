@@ -1,4 +1,10 @@
 <div class="outer-container">
+  <% if current_user %>
+    <div class="new-post">
+      <h2><%= link_to "Feel like enlightening users with a new topic? Create a new post!", "/users/#{current_user.id}/posts/new" %></h2>
+      <br>
+    </div>
+  <% end %>
   <% Post.all.order(created_at: 'desc').each do |post| %>
     <a href="<%= post_url(post) %>">
       <div class="inner-posts-container">

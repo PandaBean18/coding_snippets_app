@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
         if @user
             session[:session_token] = @user.reset_session_token!
-            render json: session
+            redirect_to "/home"
         else
             flash.now[:errors] = 'Invalid credentials.'
             render :new

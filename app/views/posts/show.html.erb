@@ -25,9 +25,11 @@
   <% end %>
 </div>
 
-<%= link_to 'Add a new snippet', "/posts/#{@post.id}/snippets/new" %>
+<% if current_user %>
+  <%= link_to 'Add a new snippet', "/posts/#{@post.id}/snippets/new" %>
+<% end %>
 
-<% if current_user.id == @post.user_id %>
+<% if current_user && current_user.id == @post.user_id %>
   <div class="creator_options">
     <form class="" action="<%= edit_post_url %>" method="get">
       <%= auth_token %>
