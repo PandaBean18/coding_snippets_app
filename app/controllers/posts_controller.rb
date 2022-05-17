@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
     def show
         @post = Post.find_by(id: params[:id])
-        if @post 
+        if @post
             render :show
-        else  
+        else
             redirect_to user_url(current_user)
         end
     end
@@ -50,11 +50,12 @@ class PostsController < ApplicationController
     end
 
     def destroy
-        @post = Post.find_by(id: params[:id])
+      if current_user
+          @post = Post.find_by(id: params[:id])
 
-        @post ? @post.destroy : nil
-
-        redirect_to user_url(current_user)
+          @post ? @post.destroy : nil
+      end
+      redirect_to "/home"
     end
 
     private

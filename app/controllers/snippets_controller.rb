@@ -12,6 +12,7 @@ class SnippetsController < ApplicationController
     def create
         new_snippet_params = snippet_params
         new_snippet_params[:user_id] = current_user.id
+        new_snippet_params[:code] = "# Snippet by: #{current_user.username}\r\n# Language: #{new_snippet_params[:language]}\r\n" + new_snippet_params[:code]
         @snippet = Snippet.new(new_snippet_params)
         @post = Post.find_by(id: new_snippet_params[:post_id])
 

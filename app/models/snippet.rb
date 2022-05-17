@@ -3,23 +3,27 @@ class Snippet < ApplicationRecord
     validates :language, inclusion: { in: ['python', 'ruby', 'java'] }
 
     belongs_to(
-        :post, 
-        class_name: 'Post', 
-        foreign_key: 'post_id', 
+        :post,
+        class_name: 'Post',
+        foreign_key: 'post_id',
         primary_key: 'id'
     )
 
     belongs_to(
-        :user, 
-        class_name: 'User', 
-        foreign_key: 'user_id', 
+        :user,
+        class_name: 'User',
+        foreign_key: 'user_id',
         primary_key: 'id'
     )
 
     def beautify_snippet
-        keywords = ['def', 'class', 'if', 'else', 'end', 'elsif', 'elif', 'try', 'except', 'begin', 'rescue', 'return']
+        keywords = ['def', 'class', 'if', 'else', 'end', 'elsif', 'elif', 'try', 'except', 'begin', 'rescue', 'return', 'for', 'while', 'in', 'do']
         sentences = []
         self.code.split("\r\n").each do |sent|
+            if sent.strip[0] == '#'
+                sentences << "<span style='color: #7F8487'>#{sent}</span>"
+                next
+            end
             words = []
             is_string = false
             starting_string_char = nil
@@ -47,28 +51,27 @@ class Snippet < ApplicationRecord
             end
             sentences << "<span>#{words.join(" ")}</span>"
         end
-        #return sentences
         return fix_indent(sentences.join("\r\n")).html_safe
     end
 
     def fix_indent(new_snippet)
-        i = 0 
+        i = 0
         sentences = self.code.split("\r\n")
         indented_snippet = []
-        while i < sentences.length 
-            j = 0 
+        while i < sentences.length
+            j = 0
             x = new_snippet.split("\r\n")[i]
-            while sentences[i][j] == ' '  
-                if x[7..10] == 'span'              
+            while sentences[i][j] == ' '
+                if x[7..10] == 'span'
                     x.insert(35, ' ')
-                else  
+                else
                     x.insert(6, ' ')
                 end
                 j += 1
-            end 
-            indented_snippet << x 
+            end
+            indented_snippet << x
             i += 1
-        end 
+        end
         return indented_snippet.join("\r\n")
     end
 end

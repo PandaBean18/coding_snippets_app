@@ -1,15 +1,31 @@
-<h1>Log in</h1>
-<form action="<%= session_url %>" method="post">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="text" name="user[username]" placeholder="Username">
-    <br>
-    <input type="password" name="user[password]" placeholder="Password">
-    <br>
-    <input type="submit" value="Log in">
-</form>
-
-<div class="errors">
-  <% if flash.now[:errors] %>
-    <p><%= flash.now[:errors] %></p>
-  <% end %>
+<% content_for :header do %>
+  <div class="sec-header">
+    <div>
+      <h1>Log in!</h1>
+    </div>
+  </div>
+<% end %>
+<div class="new">
+  <form action="<%= session_url %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="text" name="user[username]" placeholder="Username">
+      <br>
+      <br>
+      <input type="password" name="user[password]" placeholder="Password">
+      <br>
+      <br>
+      <input type="submit" value="Log in">
+  </form>
 </div>
+
+<br>
+<div class="new-user">
+  <%= link_to 'New user? Sign up!', new_user_url %>
+</div>
+
+<% if flash.now[:errors] %>
+<br>
+  <div class="errors">
+    <h2><%= flash.now[:errors] %></h2>
+  </div>
+<% end %>

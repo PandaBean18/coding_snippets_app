@@ -1,4 +1,4 @@
-<h1>Add a new post</h1>
+<h1 style="text-align: center;">Add a new post</h1>
 <div class="new">
     <form action="<%= posts_url %>" method="post">
     <%= auth_token %>
@@ -16,8 +16,9 @@
   </form>
 </div>
 
-<div class="errors">
-  <% if flash.now[:errors] %>
-    <p><%= flash.now[:errors] %></p>
-  <% end %>
-</div>
+<% if flash.now[:errors] %>
+  <br>
+  <div class="errors">
+    <h2><%= flash.now[:errors] %></h2>
+  </div>
+<% end %>

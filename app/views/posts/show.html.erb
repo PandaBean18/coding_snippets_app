@@ -1,17 +1,16 @@
-<h1><%= @post.heading %></h1>
+<h1 class="post-heading"><%= @post.heading %></h1>
 <h3>By: <%= @post.user.username %></h3>
 <div class="desc">
-  <p><%= @post.description %></p>
+  <p style="font-weight: bold"><%= @post.description %></p>
 </div>
 
 <div class="snippet">
   <% @post.coding_snippets.each do |snippet| %>
-    <p>Snippet by: <%= snippet.user.username %></p>
-    <pre style="background: rgb(45, 45, 45); color: white; width: 500px; border-radius: 12px;">
-      <code>
-        <%= '' %>
-        <%= snippet.beautify_snippet %>
-      </code>
+    <pre style="background: rgb(45, 45, 45); color: white; width: 500px; border-radius: 12px; padding: 5px">
+<code>
+<span></span>
+<%= snippet.beautify_snippet %>
+</code>
     </pre>
 
     <% if current_user == snippet.user %>
@@ -26,7 +25,10 @@
 </div>
 
 <% if current_user %>
-  <%= link_to 'Add a new snippet', "/posts/#{@post.id}/snippets/new" %>
+<br>
+  <div class="new-snippet">
+    <%= link_to 'Add a new snippet', "/posts/#{@post.id}/snippets/new" %>
+  </div>
 <% end %>
 
 <% if current_user && current_user.id == @post.user_id %>
