@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
         if @user.save
             self.log_user_in!(@user)
-            redirect_to user_url(@user)
+            redirect_to "/home"
         else
             flash.now[:errors] = @user.errors.full_messages[0]
             render :new
