@@ -1,11 +1,14 @@
 <h1><%= @user.username %></h1>
+<h3>Member since: <%= @user.created_at.httpdate[0..15] %></h3>
+<br>
 <h2>Authored posts: </h2>
 <div class="outer-container">
   <% @user.posts.order(created_at: 'desc').each do |post| %>
     <a href="<%= post_url(post) %>">
       <div class="inner-posts-container">
         <p class="heading"><%= post.heading %></p>
-        <p class="post-desc">:- <%= post.description[0..30] + '...' %></p>
+        <p class="post-desc">:- <%= post.description[0..60] + '...' %></p>
+        <p>Posted on: <%= post.created_at.httpdate[0..15] %></p>
       </div>
     </a>
     <br>
