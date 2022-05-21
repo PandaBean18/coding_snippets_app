@@ -1,5 +1,6 @@
 <h1 class="post-heading"><%= @post.heading %></h1>
 <h3>By: <%= @post.user.username %></h3>
+<h3>Posted at: <%= @post.created_at.httpdate[0..15] %></h3>
 <div class="desc">
   <p style="font-weight: bold"><%= @post.description %></p>
 </div>

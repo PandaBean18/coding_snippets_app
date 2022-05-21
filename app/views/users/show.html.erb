@@ -1,1 +1,13 @@
-<h1><%= current_user.username %></h1>
+<h1><%= @user.username %></h1>
+<h2>Authored posts: </h2>
+<div class="outer-container">
+  <% @user.posts.order(created_at: 'desc').each do |post| %>
+    <a href="<%= post_url(post) %>">
+      <div class="inner-posts-container">
+        <p class="heading"><%= post.heading %></p>
+        <p class="post-desc">:- <%= post.description[0..30] + '...' %></p>
+      </div>
+    </a>
+    <br>
+  <% end %>
+</div>
