@@ -1,48 +1,72 @@
-<h1 class="post-heading"><%= @post.heading %></h1>
-<a href="<%= user_url(@post.user) %>" style="text-decoration: none; color: #000000"><h3>By: <%= @post.user.username %></h3></a>
-<h3>Posted at: <%= @post.created_at.httpdate[0..15] %></h3>
-<div class="desc">
-  <p style="font-weight: bold"><%= @post.description %></p>
-</div>
+<% if @post.user.posts.length > 1 %>
+<div style="width: 70%; float: left; border-right: 1px solid #dbd9d9; padding-right: 5px">
+<% else %>
+<div>
+<% end %>
+  <h1 class="post-heading"><%= @post.heading %></h1>
+  <a href="<%= user_url(@post.user) %>" style="text-decoration: none; color: #000000"><h3>By: <%= @post.user.username %></h3></a>
+  <h3>Posted at: <%= @post.created_at.httpdate[0..15] %></h3>
+  <div class="desc">
+    <p style="font-weight: bold"><%= @post.description %></p>
+  </div>
 
-<div class="snippet">
-  <% @post.coding_snippets.each do |snippet| %>
-    <pre style="background: rgb(45, 45, 45); color: white; width: 500px; border-radius: 12px; padding: 5px">
+  <div class="snippet">
+    <% @post.coding_snippets.each do |snippet| %>
+      <pre style="background: rgb(45, 45, 45); color: white; width: 500px; border-radius: 12px; padding: 5px">
 <code>
 <span></span>
 <%= snippet.beautify_snippet %>
 </code>
-    </pre>
+      </pre>
 
-    <% if current_user == snippet.user %>
-      <form class="" action="<%= snippet_url(snippet) %>" method="post">
+      <% if current_user == snippet.user %>
+        <form class="" action="<%= snippet_url(snippet) %>" method="post">
+          <%= auth_token %>
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="snippet[id]" value="<%= snippet.id %>">
+          <input type="submit" value="Delete">
+        </form>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if current_user %>
+  <br>
+    <div class="new-snippet">
+      <%= link_to 'Add a new snippet', "/posts/#{@post.id}/snippets/new" %>
+    </div>
+  <% end %>
+
+  <% if current_user && current_user.id == @post.user_id %>
+    <div class="creator_options">
+      <form class="" action="<%= edit_post_url %>" method="get">
+        <%= auth_token %>
+        <input type="submit" value="Edit post">
+      </form>
+
+      <form class="" action="<%= post_url %>" method="post">
         <%= auth_token %>
         <input type="hidden" name="_method" value="delete">
-        <input type="hidden" name="snippet[id]" value="<%= snippet.id %>">
-        <input type="submit" value="Delete">
+        <input type="submit" value="Delete post">
       </form>
-    <% end %>
+    </div>
   <% end %>
 </div>
 
-<% if current_user %>
-<br>
-  <div class="new-snippet">
-    <%= link_to 'Add a new snippet', "/posts/#{@post.id}/snippets/new" %>
-  </div>
-<% end %>
-
-<% if current_user && current_user.id == @post.user_id %>
-  <div class="creator_options">
-    <form class="" action="<%= edit_post_url %>" method="get">
-      <%= auth_token %>
-      <input type="submit" value="Edit post">
-    </form>
-
-    <form class="" action="<%= post_url %>" method="post">
-      <%= auth_token %>
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete post">
-    </form>
+<% if @post.user.posts.length > 1 %>
+  <div class="outer-container" style="overflow: hidden; padding-left: 5px">
+    <h2>More from the author:</h2>
+    <% @post.user.posts.order(created_at: 'desc').each do |post| %>
+      <% if post != @post %>
+        <a href="<%= post_url(post) %>">
+          <div class="inner-posts-container">
+            <p class="heading"><%= post.heading %></p>
+            <p class="post-desc">:- <%= post.description[0..15] + '...' %></p>
+            <p>Posted on: <%= post.created_at.httpdate[0..15] %></p>
+          </div>
+        </a>
+        <br>
+      <% end %>
+    <% end %>
   </div>
 <% end %>

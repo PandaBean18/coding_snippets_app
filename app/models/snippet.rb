@@ -37,6 +37,8 @@ class Snippet < ApplicationRecord
                     words[-1] += "#{word}</span>"
                 elsif is_string
                     words[-1] += "#{word} "
+                elsif word[-1] == ':' && keywords.include?(word[0...-1])
+                    words << "<span style='color: #79DAE8'>#{word[0...-1]}</span><span>:</span>"
                 elsif word[0] == ':'
                     words << "<span style='color: #FF8D29'>#{word}</span>"
                 elsif keywords.include?(word)
