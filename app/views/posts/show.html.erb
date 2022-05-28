@@ -5,7 +5,7 @@
 <% end %>
   <h1 class="post-heading"><%= @post.heading %></h1>
   <a href="<%= user_url(@post.user) %>" style="text-decoration: none; color: #000000"><h3>By: <%= @post.user.username %></h3></a>
-  <h3>Posted at: <%= @post.created_at.httpdate[0..15] %></h3>
+  <h3>Posted on: <%= @post.created_at.httpdate[0..15] %></h3>
   <div class="desc">
     <p style="font-weight: bold"><%= @post.description %></p>
   </div>
