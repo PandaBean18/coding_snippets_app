@@ -1,5 +1,9 @@
 .post-heading {
   border-bottom: 1px solid #dbd9d9;
+  font-family: 'Oswald', sans-serif;
+  font-size: 50px;
+  margin-top: 0px;
+  color: black;
 }
 
 .snippet {
@@ -24,7 +28,7 @@ pre {
 .new-snippet {
   margin: auto;
   width: 134px;
-  height: 35px;
+  height: 50px;
   background-color: #fde4c3;
   border-radius: 12px;
 }

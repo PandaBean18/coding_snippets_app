@@ -12,13 +12,13 @@
 
 .inner-posts-container {
   color: white;
-  background-color: #494747;
+  background-color: #A09D9C;
   padding: 10px;
   border-radius: 6px;
 }
 
 .inner-posts-container:hover {
-  background-color: #403F3F;
+  background-color: #898786;
   transition: 0.3s;
 }
 
@@ -28,6 +28,8 @@
 }
 
 .heading {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
   margin: 0px;
   color: black;
 }

@@ -24,8 +24,9 @@
           <%= auth_token %>
           <input type="hidden" name="_method" value="delete">
           <input type="hidden" name="snippet[id]" value="<%= snippet.id %>">
-          <input type="submit" value="Delete">
+          <input type="submit" value="Delete" style="margin-bottom: 10px;">
         </form>
+        <br>
       <% end %>
     <% end %>
   </div>
@@ -54,14 +55,14 @@
 </div>
 
 <% if @post.user.posts.length > 1 %>
-  <div class="outer-container" style="overflow: hidden; padding-left: 5px">
-    <h2>More from the author:</h2>
+<h2 style="color: black; font-family: 'Oswald', sans-serif; font-size: 36px; text-align: center;">More from the author:</h2>
+  <div class="outer-container" style="overflow: hidden; padding-left: 5px; width: 250px;">
     <% @post.user.posts.order(created_at: 'desc').each do |post| %>
       <% if post != @post %>
         <a href="<%= post_url(post) %>">
           <div class="inner-posts-container">
             <p class="heading"><%= post.heading %></p>
-            <p class="post-desc">:- <%= post.description[0..15] + '...' %></p>
+            <p class="post-desc"><%= post.description[0..15] + '...' %></p>
             <p>Posted on: <%= post.created_at.httpdate[0..15] %></p>
           </div>
         </a>

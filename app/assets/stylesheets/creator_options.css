@@ -1,13 +1,14 @@
 .creator_options {
-  width: 180px;
+  width: 220px;
   margin: auto;
   overflow: hidden;
 }
 
 .creator_options form {
-  width: 80px;
+  width: 100px;
 }
 
 .creator_options input[type="submit"] {
-  width: 80px;
+  width: 100px;
+  font-family: 'Spline Sans Mono', monospace;
 }
